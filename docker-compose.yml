@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cli:
+    build: .
+    tty: true             # Allocate a TTY for interactive prompts
+    stdin_open: true      # Keep stdin open for interactive input
+    working_dir: /app     # Default working directory inside the container
+    volumes:
+      - .:/app            # Mount current directory into the container
+    environment:
+      - NAMECHEAP_API_USER=${NAMECHEAP_API_USER}
+      - NAMECHEAP_API_KEY=${NAMECHEAP_API_KEY}
+      - NAMECHEAP_USERNAME=${NAMECHEAP_USERNAME}
+      - CLIENT_IP=${CLIENT_IP}
+    restart: unless-stopped
+    # Uncomment and customize the command below to run directly
+    # command: ruby bin/app.rb --domain=example.com
+    env_file:
+      - .env              # Load env vars from .env file (optional)

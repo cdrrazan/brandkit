@@ -1,0 +1,10 @@
+# Files and directories to ignore in the repository
+.byebug_history
+.idea
+.DS_Store
+
+# ENV
+.env
+
+# Gem files
+brandkit-0.1.0.gem
